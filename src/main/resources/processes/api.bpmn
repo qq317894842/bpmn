@@ -9,7 +9,6 @@
         </activiti:field>
       </extensionElements>
     </serviceTask>
-
     <serviceTask activiti:class="com.supernode.service.ApiTask" activiti:exclusive="true" id="_4" name="ServiceTask">
       <extensionElements>
         <activiti:field name="url">
