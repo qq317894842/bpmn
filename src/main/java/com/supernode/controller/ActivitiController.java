@@ -88,6 +88,21 @@ public class ActivitiController {
         return R.error("启动任务失败");
     }
 
+    /**
+     *
+     * Date: 2016/10/17  11:47
+     * Description: 启动工作流
+     */
+    @RequestMapping("/startProcess/{businessKey}/{processDefinitionKey}")
+    public R startProcess(@PathVariable("businessKey") String businessKey, @PathVariable("processDefinitionKey") String processDefinitionKey) {
+        try {
+            return activitiService.startProcess(businessKey, processDefinitionKey, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return R.error("启动任务失败");
+    }
+
     @RequestMapping("/getTasksByUserId/{userId}")
     public R getTasksByUserId(@PathVariable("userId") String userId) {
         try {

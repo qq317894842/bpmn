@@ -116,18 +116,20 @@ public class ActivitiServiceImpl implements ActivitiService {
 				return R.error("该业务已存在审批中的数据");
 			}
 			// 2 json对象转Map，执行人信息在流程变量之中
-			JSONObject jsonObject = JSONObject.parseObject(variables);
-			Map<String, Object> map = JSONObject.toJavaObject(jsonObject, Map.class);
-
+			Map<String, Object> map = null;
+			if(variables!=null){
+				JSONObject jsonObject = JSONObject.parseObject(variables);
+				map = JSONObject.toJavaObject(jsonObject, Map.class);
+			}
 			// 3 启动流程
 			ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, businessKey, map);
 
 			//查询是否流程启动成功
 			List<Task> tasks = getTasksByBusKey(businessKey);
-			if (tasks == null || tasks.size() == 0) {
-				return R.error("启动失败");
-			}
-			return R.ok().put("data", processInstance.getId());
+//			if (tasks == null || tasks.size() == 0) {
+//				return R.error("启动失败");
+//			}
+			return R.ok().put("启动成功，流程实例id:", processInstance.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return R.error("启动失败："+e.getMessage());
