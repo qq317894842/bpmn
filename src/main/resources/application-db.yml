@@ -1,7 +1,7 @@
 # DataSource Config
 spring:
   datasource:
-    username: root
-    password: root123
-    url: jdbc:mysql://39.108.5.84:3306/db_bpmn?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: user01
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/db_bpmn?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
